@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\libtiffconvert">
+      <UniqueIdentifier>{dfb526b8-0d1a-4e46-b44c-9133accca1f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libtiffconvert">
+      <UniqueIdentifier>{8d34a7d0-02c0-4c73-9c16-180a4973d8be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\cli">
+      <UniqueIdentifier>{9581a684-1674-4550-a294-1459a5c4c9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\cli\validators">
+      <UniqueIdentifier>{8a37e13c-eb54-4fcf-84e7-2345ae046fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cli">
+      <UniqueIdentifier>{6e4adfb1-427f-48dd-b0ae-3fcccec86fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cli\validators">
+      <UniqueIdentifier>{37263485-3598-4ad2-8e93-03452e4117c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\handlers">
+      <UniqueIdentifier>{a2d1f606-108e-48a7-8810-b00b2f56238c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\handlers">
+      <UniqueIdentifier>{6a7c5f20-bfbc-44ce-8da4-65bb2dbaa813}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tiffconvert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+    <ClCompile Include="TiffImage.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+    <ClCompile Include="DestructibleBuffer.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+    <ClCompile Include="CodecValidator.cpp">
+      <Filter>Source Files\cli\validators</Filter>
+    </ClCompile>
+    <ClCompile Include="PreRenderWangHandler.cpp">
+      <Filter>Source Files\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\libtiffconvert</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libtiffconvert.h">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="TiffImage.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="DestructibleBuffer.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="CLI11.hpp">
+      <Filter>Header Files\cli</Filter>
+    </ClInclude>
+    <ClInclude Include="DynaCli.hpp">
+      <Filter>Header Files\cli</Filter>
+    </ClInclude>
+    <ClInclude Include="CodecValidator.hpp">
+      <Filter>Header Files\cli\validators</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments.hpp">
+      <Filter>Header Files\cli</Filter>
+    </ClInclude>
+    <ClInclude Include="PreRenderWangHandler.hpp">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.hpp">
+      <Filter>Header Files\libtiffconvert</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tiffconvert.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\logo\sizes\tiffconvert.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
