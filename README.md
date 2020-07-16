@@ -84,7 +84,7 @@ change code in that library. You may also open an issue requesting a change in t
 For the rest; just clone the solution and open it in Visual Studio 2019.
 
 ## Release History
-- **1.0.0.0**:
+- **1.1.0.0**:
     - initial public source release;
 
 ## Meta
