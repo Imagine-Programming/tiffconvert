@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtiffwang", "libtifwang\libtifwang.vcxproj", "{CE5EA1D1-BB31-4C40-B5EB-1FD417EB216E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtifwang-tests", "libtifwang-tests\libtifwang-tests.vcxproj", "{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tiffconvert", "tiffconvert\tiffconvert.vcxproj", "{510A6A4F-DB7A-4F2E-BE01-E45DB5B39D74}"
 EndProject
 Global
@@ -25,14 +23,6 @@ Global
 		{CE5EA1D1-BB31-4C40-B5EB-1FD417EB216E}.Release|x64.Build.0 = Release|x64
 		{CE5EA1D1-BB31-4C40-B5EB-1FD417EB216E}.Release|x86.ActiveCfg = Release|Win32
 		{CE5EA1D1-BB31-4C40-B5EB-1FD417EB216E}.Release|x86.Build.0 = Release|Win32
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Debug|x64.ActiveCfg = Debug|x64
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Debug|x64.Build.0 = Debug|x64
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Debug|x86.ActiveCfg = Debug|Win32
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Debug|x86.Build.0 = Debug|Win32
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Release|x64.ActiveCfg = Release|x64
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Release|x64.Build.0 = Release|x64
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Release|x86.ActiveCfg = Release|Win32
-		{A3CB1AF7-EADF-4300-93CB-F3D7CE3E0A77}.Release|x86.Build.0 = Release|Win32
 		{510A6A4F-DB7A-4F2E-BE01-E45DB5B39D74}.Debug|x64.ActiveCfg = Debug|x64
 		{510A6A4F-DB7A-4F2E-BE01-E45DB5B39D74}.Debug|x64.Build.0 = Debug|x64
 		{510A6A4F-DB7A-4F2E-BE01-E45DB5B39D74}.Debug|x86.ActiveCfg = Debug|Win32
