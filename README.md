@@ -39,18 +39,18 @@ It should be completely in line with the PureBasic end-user agreement. If this i
 tiffconvert -pcpng input-file.tiff pdf output-file.pdf
 ```
 
-### Debug a user session to binary log file
-... excluding the -ct flags as they are automatically recorded in the binary format:
+### Convert a Tiff with annotations to individual images
+... using a basepath, whilst rescaling and inverting 
 
 ```bash
-hindsight -w C:\Users\$username\Documents\hindsight-binlogs\$image\crash_$date_$time_$random.hind launch -S -r5 -i5 "H:\Software\Some-Legacy-Program.exe" "param1" "param2"
+tiffconvert -sipcjpeg -x3000 -y3000 input-file.tiff images output/basename
 ```
 
-### A Postmortem session using AeDebug
-... see the source for a registry file on registering hindsight as postmortem debugger. Also notify the user when a program crashes and indicate the paths to the log files, so that they know what to send to the developer or administrator:
+### Asking for help
+... and see all the available options
 
 ```bash
-path\to\hindsight.exe -w C:\Users\$username\Documents\hindsight-binlogs\$image\crash_$date_$time_$random.hind mortem -Sn -r5 -i5 -p %ld -e %ld %j %p
+tiffconvert --help-all
 ```
 
 ## Remarks
