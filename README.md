@@ -84,8 +84,10 @@ change code in that library. You may also open an issue requesting a change in t
 For the rest; just clone the solution and open it in Visual Studio 2019.
 
 ## Release History
+- **1.1.1.0**:
+    - bugfix: _stricmp result not compared to 0 in endianess mark check, now using memcmp and comparing to 0.
 - **1.1.0.0**:
-    - initial public source release;
+    - initial public source release.
 
 ## Meta
 - Author: Bas Groothedde ([@BGroothedde](https://twitter.com/BGroothedde), [Blog](https://www.xoru.net))
