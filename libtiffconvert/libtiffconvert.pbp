@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.71 LTS (Windows - x64)">
   <section name="config">
     <options closefiles="1" openmode="0" name="libtiffconvert"/>
     <comment>
@@ -11,7 +11,7 @@
   <section name="data">
     <explorer view="C:\Program Files\PureBasic 5.42 LTS\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-07-15 16:37" user="B.Groothedde" host="CI002560"/>
+    <lastopen date="2020-07-16 21:06" user="Bas Groothedde" host="DESKTOP-CM8DMLG"/>
   </section>
   <section name="files">
     <file name="defs.pbi">
@@ -31,7 +31,7 @@
       <fingerprint md5="34d3fbfe9ef490e8547a761e73ccbcc0"/>
     </file>
     <file name="multipagetiff.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
       <fingerprint md5="5b6f43b7b944f845c02e3f371f3aa942"/>
     </file>
     <file name="pbPDFModule.pbi">

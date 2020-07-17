@@ -43,7 +43,7 @@ void TiffFile::Init() {
 	Read(m_Header);
 
 	// Is it little endian?
-	if (_stricmp(m_Header.ByteOrder, IntelEndian)) {
+	if (memcmp(m_Header.ByteOrder, IntelEndian, 2) == 0) {
 		m_IntegerReader = {
 			[&]() { return static_cast<int16_t>(le_to_host_ushort(Read<uint16_t>())); },
 			[&]() { return le_to_host_ushort(Read<uint16_t>()); },
@@ -69,7 +69,7 @@ void TiffFile::Init() {
 	} 
 	
 	// Is it big endian?
-	else if (_stricmp(m_Header.ByteOrder, MotorolaEndian)) {
+	else if (memcmp(m_Header.ByteOrder, MotorolaEndian, 2) == 0) {
 		m_IntegerReader = {
 			[&]() { return static_cast<int16_t>(be_to_host_ushort(Read<uint16_t>())); },
 			[&]() { return be_to_host_ushort(Read<uint16_t>()); },
