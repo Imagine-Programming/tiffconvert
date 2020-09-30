@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.71 LTS (Windows - x64)">
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
   <section name="config">
     <options closefiles="1" openmode="0" name="libtiffconvert"/>
     <comment>
@@ -11,7 +11,7 @@
   <section name="data">
     <explorer view="C:\Program Files\PureBasic 5.42 LTS\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-07-16 21:06" user="Bas Groothedde" host="DESKTOP-CM8DMLG"/>
+    <lastopen date="2020-09-11 16:07" user="B.Groothedde" host="CI002560"/>
   </section>
   <section name="files">
     <file name="defs.pbi">
@@ -48,7 +48,7 @@
     </file>
     <file name="tiff-image.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="16289fa52fd54ec77c5d0ad268e7388a"/>
+      <fingerprint md5="5751f594d498eb029a7e74f8b968ffe8"/>
     </file>
     <file name="utilities.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -63,12 +63,12 @@
       <options thread="1" xpskin="1" debug="1"/>
       <format exe="dll" cpu="0"/>
       <versioninfo enable="1">
-        <field0 value="1,0,0,0"/>
-        <field1 value="1,0,0,0"/>
+        <field0 value="1,1,2,0"/>
+        <field1 value="1,1,2,0"/>
         <field2 value="Imagine Programming"/>
         <field3 value="libtiffconvert"/>
-        <field4 value="1.0.0.0"/>
-        <field5 value="1.0.0.0"/>
+        <field4 value="1.1.2.0"/>
+        <field5 value="1.1.2.0"/>
         <field6 value="libtiffconvert"/>
         <field7 value="libtiffconvert.dll"/>
         <field8 value="libtiffconvert.dll"/>

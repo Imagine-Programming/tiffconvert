@@ -86,7 +86,7 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
                 
                 if (!ifd.IsWangTag)
                     continue;
-
+                
                 // eiStream/Wang tag found: read and render it.
                 image->Render(static_cast<uint32_t>(pageIndex), [&](HDC hDc) {
                     std::shared_ptr<PreRenderer> renderer = std::make_shared<PreRenderer>(file->GetDimensions(pageIndex), hDc);
