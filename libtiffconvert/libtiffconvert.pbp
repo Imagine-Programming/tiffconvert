@@ -11,7 +11,7 @@
   <section name="data">
     <explorer view="C:\Program Files\PureBasic 5.42 LTS\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-07-16 21:06" user="Bas Groothedde" host="DESKTOP-CM8DMLG"/>
+    <lastopen date="2020-07-18 12:26" user="Bas Groothedde" host="DESKTOP-CM8DMLG"/>
   </section>
   <section name="files">
     <file name="defs.pbi">
@@ -28,11 +28,11 @@
     </file>
     <file name="libtiffconvert.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="34d3fbfe9ef490e8547a761e73ccbcc0"/>
+      <fingerprint md5="1d081427dd4a7ad7ae9c3b58fff1cfd6"/>
     </file>
     <file name="multipagetiff.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="5b6f43b7b944f845c02e3f371f3aa942"/>
+      <fingerprint md5="94311c3a32f46f65edddf71d0d08cc6a"/>
     </file>
     <file name="pbPDFModule.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+"/>
@@ -40,7 +40,7 @@
     </file>
     <file name="renderer.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="de1e296a2bf1aa14ffec2640856b7afd"/>
+      <fingerprint md5="5e3d4db0a5ef94bb2341ce3ec1b9402d"/>
     </file>
     <file name="RotateImage.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+"/>
@@ -48,11 +48,11 @@
     </file>
     <file name="tiff-image.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="16289fa52fd54ec77c5d0ad268e7388a"/>
+      <fingerprint md5="741fd657b859319090a0e0de7feb9a11"/>
     </file>
     <file name="utilities.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="d04da6629eae02292bd1b8acbe0e4d93"/>
+      <fingerprint md5="acebbcaa0d552b9031b87227a56b1d5e"/>
     </file>
   </section>
   <section name="targets">

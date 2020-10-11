@@ -124,6 +124,7 @@ std::shared_ptr<DestructibleBuffer>	TiffImage::ExportPage(uint32_t page, uint32_
 	if (!buffer)
 		return nullptr;
 
+	resultSize = size;
 	return std::make_shared<DestructibleBuffer>(buffer, size);
 }
 

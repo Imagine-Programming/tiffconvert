@@ -7,6 +7,9 @@
 using namespace TiffConvert::Handlers;
 using namespace TiffConvert;
 
+#pragma warning ( push )
+#pragma warning ( disable: 4100 ) // unreferenced formal parameter, this is an event handler interface; not all parameters are used in every implementation
+
 /// <summary>
 /// Construct a new PreRenderWangHandler from a reference to a tiff page dimensions instance and device context.
 /// This handler burns eiStream/Wang annotations onto the current page, so that the annotations will not have to 
@@ -222,3 +225,5 @@ uint32_t PreRenderWangHandler::CalculateFontHeight(const LOGFONTA& font, const O
 	// return the scaled vertical size of the font.
 	return static_cast<uint32_t>(lfHeight * tscalef);
 }
+
+#pragma warning ( pop )

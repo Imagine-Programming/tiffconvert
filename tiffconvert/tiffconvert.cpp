@@ -79,8 +79,6 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
     // Pass 1: Prerender eiStream/Wang annotations.
     if (cli.isset(TiffConvert::Cli::NAME_PRERENDER)) {
         for (size_t pageIndex = 0; pageIndex < file->GetPageCount(); ++pageIndex) {
-            const auto& pageDimensions = file->GetDimensions(pageIndex);
-
             for (size_t ifdIndex = 0; ifdIndex < file->GetPageIfdCount(pageIndex); ifdIndex++) {
                 const auto& ifd = file->GetPageIfd(pageIndex, ifdIndex);
                 
@@ -100,9 +98,12 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
 
     // Pass 2: Invert colors
     if (cli.isset(TiffConvert::Cli::NAME_INVERT)) {
+        #pragma warning ( push )
+        #pragma warning ( disable: 4100 ) // unreferenced formal parameter, this is a callback function and we don't need all the parameters from the interface.
         auto filter = [](uint64_t x, uint64_t y, uint64_t top, uint64_t bottom) -> uint64_t {
             return bottom ^ 0xffffff;
         };
+        #pragma warning ( pop ) 
 
         for (size_t pageIndex = 0; pageIndex < file->GetPageCount(); ++pageIndex) {
             const auto& pageDimensions = file->GetDimensions(pageIndex);
@@ -116,7 +117,7 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
                     bottom color with 0xffffff.
                 */
                 RECT r{ 0, 0, static_cast<LONG>(pageDimensions.Width), static_cast<LONG>(pageDimensions.Height) };
-                renderer_rect(&r, 255 << 24, 0, true, false, 0, 0, filter); 
+                renderer_rect(&r, 255U << 24, 0U, true, false, 0U, 0U, filter); 
             });
         }
     }
@@ -128,8 +129,6 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
         auto smooth    = cli.isset(TiffConvert::Cli::NAME_SCALESMOOTH);
 
         for (size_t pageIndex = 0; pageIndex < file->GetPageCount(); ++pageIndex) {
-            const auto& pageDimensions = file->GetDimensions(pageIndex);
-
             if (!image->ScaleToMaximum(static_cast<uint32_t>(pageIndex), maxwidth, maxheight, smooth))
                 throw std::runtime_error("page scaling failed for page " + std::to_string(pageIndex));
         }

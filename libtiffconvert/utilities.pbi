@@ -86,6 +86,7 @@ EndProcedure
 ProcedureCDLL.i util_translate_points(*bounds.RECT, *points.POINT, *results.POINT, count.l)
   Protected *a.POINT
   Protected *b.POINT 
+  Protected current 
   
   For current = 0 To count - 1 
     *a = *points  + SizeOf(POINT) * current 
@@ -102,8 +103,8 @@ ProcedureCDLL.i util_is_white(color.l, requireFullAlpha.l = #False)
     ProcedureReturn Bool(Red(color) = 255 And Green(color) = 255 And Blue(color) = 255)
   EndIf 
 EndProcedure
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 96
-; FirstLine = 54
+; IDE Options = PureBasic 5.71 LTS (Windows - x64)
+; CursorPosition = 89
+; FirstLine = 55
 ; Folding = --
 ; EnableXP

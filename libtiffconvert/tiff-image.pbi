@@ -137,7 +137,8 @@ ProcedureCDLL.i tiff_image_open_p(*buffer.tiff_header, size.l, release_raw.l = #
     
     Dim \PageHandles(\PageCount)
   EndWith
-  
+
+  Protected i  
   For i = 0 To *handle\PageCount - 1 
     *handle\PageHandles(i) = tiff_image_copy_page(*handle, i)
     If (Not *handle\PageHandles(i))
@@ -172,6 +173,7 @@ EndProcedure
 ; used by the handle. This closes all the page images and frees the 
 ; raw data for the image data, but also for the handle.
 ProcedureCDLL.i tiff_image_close(*handle.tiff_image)
+  Protected i
   For i = 0 To ArraySize(*handle\PageHandles()) - 1 
     If (IsImage(*handle\PageHandles(i)))
       FreeImage(*handle\PageHandles(i))
@@ -386,6 +388,7 @@ Procedure.i tiff_image_export_pdf(*handle.tiff_image, szFilepath.s, codec.l, opt
   PDF::SetMargin(pdf, PDF::#RightMargin, 0)
   PDF::SetMargin(pdf, PDF::#TopMargin, 0)
   
+  Protected i
   For i = 0 To *handle\PageCount - 1 
     Protected size.l
     Protected *image = tiff_image_export_page_p24(*handle, i, @size, codec, options)
@@ -435,7 +438,7 @@ ProcedureCDLL.i tiff_image_export_pdf_w(*handle.tiff_image, *filepath, codec.l, 
 EndProcedure
 
 ; IDE Options = PureBasic 5.71 LTS (Windows - x64)
-; CursorPosition = 226
-; FirstLine = 207
+; CursorPosition = 390
+; FirstLine = 386
 ; Folding = ----
 ; EnableXP

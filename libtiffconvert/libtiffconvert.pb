@@ -2,6 +2,8 @@
 ; one compiler output binary. This file merely includes the exported modules so 
 ; that they will be compiled as well.
 
+EnableExplicit ; force all symbols to be declared, have PB make no assumptions.
+
 ; link with all the decoders, as tiff might contain embedded
 ; images in marks we need to render onto the burned output image.
 UseTIFFImageDecoder()
@@ -30,7 +32,7 @@ XIncludeFile "font.pbi"
 XIncludeFile "image.pbi"
 ; IDE Options = PureBasic 5.71 LTS (Windows - x64)
 ; ExecutableFormat = Shared dll
-; CursorPosition = 2
+; CursorPosition = 4
 ; EnableThread
 ; EnableXP
 ; Executable = libtiffconvert.dll

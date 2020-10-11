@@ -77,11 +77,11 @@ EndProcedure
 ;------------------------------------
 
 Procedure thickLineXY (start_x,start_y,end_x,end_y,thickness,whatcolor)
-  err_x = 0 : err_y = 0 : inc_x = 0 : inc_y = 0
+  Protected err_x = 0 : Protected err_y = 0 : Protected inc_x = 0 : Protected inc_y = 0
   
-  delta_x = end_x - start_x;
-  delta_y = end_y - start_y;
-  
+  Protected delta_x = end_x - start_x;
+  Protected delta_y = end_y - start_y;
+  Protected distance 
   
   If(delta_x > 0) : inc_x = 1 : ElseIf (delta_x = 0) : inc_x = 0 : Else : inc_x = -1 : EndIf 
   If(delta_y > 0) : inc_y = 1 : ElseIf (delta_y = 0) : inc_y = 0 : Else : inc_y = -1 : EndIf         
@@ -95,6 +95,7 @@ Procedure thickLineXY (start_x,start_y,end_x,end_y,thickness,whatcolor)
     distance = delta_y;
   EndIf 
   
+  Protected xyz
   For  xyz = 0 To  distance+1 Step 1
     ; modified to place a circle at the pixel location to get a thick line
     
@@ -135,8 +136,8 @@ Procedure Liner(x1,y1,x2,y2,r=1,color=#Black)
         Wend
     EndIf
 EndProcedure
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 136
+; IDE Options = PureBasic 5.71 LTS (Windows - x64)
+; CursorPosition = 97
 ; FirstLine = 88
 ; Folding = --
 ; EnableXP
