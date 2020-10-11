@@ -309,6 +309,11 @@ void TiffFile::AssertSizeLeft(size_t required) const {
 		throw std::runtime_error("insufficient data left in stream");
 }
 
+void TiffFile::AssertOffset(size_t offset) const {
+	if (offset >= m_StreamSize)
+		throw std::runtime_error("insufficient data, cannot seek to offset");
+}
+
 void TiffFile::AssertPageIndex(size_t pageIndex) const {
 	if (pageIndex >= GetPageCount())
 		throw std::out_of_range("requested page index is out of range");
@@ -344,12 +349,12 @@ void TiffFile::Read(TValue& value) {
 /// <exception cref="::std::runtime_error">When insufficient data is available, an exception is thrown.</exception>
 template <typename TValue,
 	std::enable_if_t<
-	std::conjunction<
-	std::disjunction<std::is_integral<TValue>, std::is_floating_point<TValue>>,
-	std::negation<std::is_pointer<TValue>>,
-	std::negation<std::is_reference<TValue>>
-	>::value,
-	int
+		std::conjunction<
+			std::disjunction<std::is_integral<TValue>, std::is_floating_point<TValue>>,
+			std::negation<std::is_pointer<TValue>>,
+			std::negation<std::is_reference<TValue>>
+		>::value,
+		int
 	>
 >
 TValue TiffFile::Read() {
@@ -369,13 +374,14 @@ void TiffFile::Read(const TiffIfdEntry& entry, uint8_t* buffer, size_t size) con
 	if (entry.TagType != TiffTagType::BYTE)
 		throw std::runtime_error("unexpected type for IFD tag encountered, should be BYTE");
 
-	AssertSizeLeft(size);
+	AssertOffset(entry.ValueOffset);
 
 	if (size < entry.ValueCount)
 		throw std::runtime_error("insufficient data in output buffer, should be " + std::to_string(entry.ValueCount) + " bytes large");
 
 	auto offset = m_Stream.tellg();
 	m_Stream.seekg(entry.ValueOffset, std::ios::beg);
+	AssertSizeLeft(size);
 	m_Stream.read(reinterpret_cast<char*>(buffer), entry.ValueCount);
 	m_Stream.seekg(offset, std::ios::beg);
 }
@@ -409,10 +415,12 @@ std::vector<uint16_t> TiffFile::ReadUnsignedShortArray(const TiffIfdEntry& entry
 	if (entry.TagType != TiffTagType::SHORT)
 		throw std::runtime_error("unexpected type for IFD tag encountered, should be SHORT");
 
+	AssertOffset(entry.ValueOffset);
+
 	auto offset = m_Stream.tellg();
 
 	m_Stream.seekg(entry.ValueOffset, std::ios::beg);
-
+	AssertSizeLeft(sizeof(std::uint16_t) * entry.ValueCount);
 	result.resize(entry.ValueCount);
 	for (uint32_t i = 0; i < entry.ValueCount; ++i)
 		result[i] = m_IntegerReader.Uint16();
@@ -433,9 +441,13 @@ double TiffFile::ReadRational(const TiffIfdEntry& entry) {
 	if (entry.TagType != TiffTagType::RATIONAL)
 		throw std::runtime_error("unexpected type for IFD tag encountered, should be RATIONAL");
 
+	AssertOffset(entry.ValueOffset);
+
 	auto offset = m_Stream.tellg();
 
 	m_Stream.seekg(entry.ValueOffset, std::ios::beg);
+
+	AssertSizeLeft(sizeof(std::uint32_t) * 2);
 
 	auto numerator = (double)m_IntegerReader.Uint32();
 	auto denominator = (double)m_IntegerReader.Uint32();
@@ -463,8 +475,12 @@ std::string TiffFile::ReadAsciiString(const TiffIfdEntry& entry) {
 	if (entry.ValueCount <= 1)
 		return "";
 
+	AssertOffset(entry.ValueOffset);
+
 	auto offset = m_Stream.tellg();
 	std::string result(static_cast<size_t>(entry.ValueCount - 1), ' ');
+
+	AssertSizeLeft(entry.ValueCount - 1);
 
 	m_Stream.seekg(entry.ValueOffset, std::ios::beg);
 	m_Stream.read(&result[0], entry.ValueCount - 1);

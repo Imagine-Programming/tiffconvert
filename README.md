@@ -84,6 +84,10 @@ change code in that library. You may also open an issue requesting a change in t
 For the rest; just clone the solution and open it in Visual Studio 2019.
 
 ## Release History
+- **1.1.3.0**:
+    - bugfix: improper validation of stream offsets and sizes to be read from the stream would cause some eiStream preprocessing to fail.
+- **1.1.2.0**:
+    - bugfix: `tiff_verify_header` would actually change the byte order of the `Magic` and `IFD0` offset field, this has been patched.
 - **1.1.1.0**:
     - bugfix: _stricmp result not compared to 0 in endianess mark check, now using memcmp and comparing to 0.
 - **1.1.0.0**:

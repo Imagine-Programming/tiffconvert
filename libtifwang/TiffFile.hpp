@@ -209,6 +209,14 @@
 					/// <exception cref="std::runtime_error">When required &lt; SizeLeft().</exception>
 					void AssertSizeLeft(size_t required) const;
 
+
+					/// <summary>
+					/// Throw an exception if a certain offset in a stream does not exist.
+					/// </summary>
+					/// <param name="offset">The offset to test</param>
+					/// <exception cref="std::runtime_error">When the offset is out of bounds.</exception>
+					void AssertOffset(size_t offset) const;
+
 					/// <summary>
 					/// Throw an exception if the IFD (page) index is out of range.
 					/// </summary>

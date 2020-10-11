@@ -60,22 +60,25 @@ EndProcedure
 ; tiff image header, which also contains a valid IFD0 offset.
 Procedure.i tiff_verify_header(*buffer.tiff_header, size.l)
   ; not a tiff
-  If (*buffer\ByteOrder <> $4949 And *buffer\ByteOrder <> $4d4d)
+  If (*buffer\ByteOrder <> $4949 And *buffer\ByteOrder <> $4d4d) 
     ProcedureReturn #False 
   EndIf 
   
+  Protected magic.u = *buffer\Magic
+  Protected ifd0.l  = *buffer\IFD0
+  
   If (*buffer\ByteOrder = $4d4d)
-    *buffer\Magic = SwapBytesW(*buffer\Magic)
-    *buffer\IFD0  = SwapBytesL(*buffer\IFD0)
-    
-    ; magic number invalid, not a tiff
-    If (*buffer\Magic <> 42)
-      ProcedureReturn #False 
-    EndIf 
+    magic = SwapBytesW(magic)
+    ifd0  = SwapBytesL(ifd0)
+  EndIf 
+  
+  ; magic number invalid, not a tiff
+  If (magic <> 42)
+    ProcedureReturn #False 
   EndIf 
   
   ; offset to IFD0 exceeds size
-  If (*buffer\IFD0 >= size)
+  If (ifd0 >= size)
     ProcedureReturn #False 
   EndIf 
   
@@ -137,8 +140,7 @@ ProcedureCDLL.i tiff_image_open_p(*buffer.tiff_header, size.l, release_raw.l = #
     
     Dim \PageHandles(\PageCount)
   EndWith
-
-  Protected i  
+  
   For i = 0 To *handle\PageCount - 1 
     *handle\PageHandles(i) = tiff_image_copy_page(*handle, i)
     If (Not *handle\PageHandles(i))
@@ -173,7 +175,6 @@ EndProcedure
 ; used by the handle. This closes all the page images and frees the 
 ; raw data for the image data, but also for the handle.
 ProcedureCDLL.i tiff_image_close(*handle.tiff_image)
-  Protected i
   For i = 0 To ArraySize(*handle\PageHandles()) - 1 
     If (IsImage(*handle\PageHandles(i)))
       FreeImage(*handle\PageHandles(i))
@@ -388,7 +389,6 @@ Procedure.i tiff_image_export_pdf(*handle.tiff_image, szFilepath.s, codec.l, opt
   PDF::SetMargin(pdf, PDF::#RightMargin, 0)
   PDF::SetMargin(pdf, PDF::#TopMargin, 0)
   
-  Protected i
   For i = 0 To *handle\PageCount - 1 
     Protected size.l
     Protected *image = tiff_image_export_page_p24(*handle, i, @size, codec, options)
@@ -437,8 +437,8 @@ ProcedureCDLL.i tiff_image_export_pdf_w(*handle.tiff_image, *filepath, codec.l, 
   ProcedureReturn tiff_image_export_pdf(*handle, PeekS(*filepath), codec, options)
 EndProcedure
 
-; IDE Options = PureBasic 5.71 LTS (Windows - x64)
-; CursorPosition = 390
-; FirstLine = 386
+; IDE Options = PureBasic 5.72 (Windows - x64)
+; CursorPosition = 84
+; FirstLine = 51
 ; Folding = ----
 ; EnableXP
