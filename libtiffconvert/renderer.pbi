@@ -55,7 +55,8 @@ ProcedureCDLL.i renderer_line(*points.POINT, count.l, size.l, color.l, filter.re
   
   Protected *a.POINT
   Protected *b.POINT
-  
+
+  Protected i  
   For i = 0 To count - 2
     *a = *points + SizeOf(POINT) * i
     *b = *points + SizeOf(POINT) * (i + 1)
@@ -76,6 +77,7 @@ ProcedureCDLL.i renderer_single_line(*points.POINT, count.l, color.l, filter.ren
   Protected *a.POINT
   Protected *b.POINT
   
+  Protected i
   For i = 0 To count - 2
     *a = *points + SizeOf(POINT) * i
     *b = *points + SizeOf(POINT) * (i + 1)
@@ -103,6 +105,7 @@ ProcedureCDLL.i renderer_rect(*bounds.RECT, fillColor.l, strokeColor.l, fill.l, 
       w = *bounds\right - x
       h = *bounds\bottom - y
       
+      Protected i
       For i = 1 To strokeThickness
         Box(x, y, w, h, strokeColor)
         x + 1 : y + 1 : w - 2 : h - 2
@@ -144,6 +147,7 @@ Procedure.i renderer_text(x.l, y.l, text.s, font.i, color.l, filter.renderer_fil
   Protected ycoord = y 
   Protected line.s
   
+  Protected i
   For i = 1 To lines 
     line = StringField(text, i, #LF$)
     DrawText(x, y, StringField(text, i, #LF$), color)
@@ -190,8 +194,8 @@ ProcedureCDLL.i renderer_image_alpha(*bounds.RECT, *image.image_handle, alpha.a 
   
   ProcedureReturn #True 
 EndProcedure
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 181
-; FirstLine = 142
+; IDE Options = PureBasic 5.71 LTS (Windows - x64)
+; CursorPosition = 149
+; FirstLine = 145
 ; Folding = --
 ; EnableXP

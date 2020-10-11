@@ -3,6 +3,9 @@
 
 using namespace TiffConvert;
 
+#pragma warning ( push )
+#pragma warning ( disable: 4100 ) // unreferenced formal parameter, filters are callback functions of which we don't use the x and y parameters
+
 /// <summary>
 /// The highlight filter only renders onto white.
 /// </summary>
@@ -48,6 +51,8 @@ uint64_t __stdcall Renderer::TransparentFilter(uint64_t x, uint64_t y, uint64_t 
 	return top;
 }
 
+#pragma warning ( pop )
+
 /// <summary>
 /// Determines which filter to use based on the highlight and transparent state from the mark attributes.
 /// Returns nullptr if no filter should be applied.
@@ -88,7 +93,7 @@ bool Renderer::Line(const std::vector<POINT> points, uint32_t lineSize, uint32_t
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::Line(const std::vector<POINT> points, uint32_t lineSize, const RGBQUAD& color, bool highlight, bool transparent) {
-	return Line(points, lineSize, Util::ColorToLong(color, 255), highlight);
+	return Line(points, lineSize, Util::ColorToLong(color, 255), highlight, transparent);
 }
 
 /// <summary>
@@ -112,7 +117,7 @@ bool Renderer::Line(const std::vector<POINT> points, uint32_t color, bool highli
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::Line(const std::vector<POINT> points, const RGBQUAD& color, bool highlight, bool transparent) {
-	return Line(points, Util::ColorToLong(color, 255), highlight);
+	return Line(points, Util::ColorToLong(color, 255), highlight, transparent);
 }
 
 /// <summary>
@@ -138,7 +143,7 @@ bool Renderer::FillRect(const RECT& rectangle, uint32_t color, uint32_t cornerRa
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::FillRect(const RECT& rectangle, const RGBQUAD& color, uint32_t cornerRadius, bool highlight, bool transparent) {
-	return FillRect(rectangle, Util::ColorToLong(color, 255), cornerRadius, highlight);
+	return FillRect(rectangle, Util::ColorToLong(color, 255), cornerRadius, highlight, transparent);
 }
 
 /// <summary>
@@ -166,7 +171,7 @@ bool Renderer::StrokeRect(const RECT& rectangle, uint32_t color, uint32_t stroke
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::StrokeRect(const RECT& rectangle, const RGBQUAD& color, uint32_t strokeSize, uint32_t cornerRadius, bool highlight, bool transparent) {
-	return StrokeRect(rectangle, Util::ColorToLong(color, 255), strokeSize, cornerRadius, highlight);
+	return StrokeRect(rectangle, Util::ColorToLong(color, 255), strokeSize, cornerRadius, highlight, transparent);
 }
 
 /// <summary>
@@ -196,7 +201,7 @@ bool Renderer::FillAndStrokeRect(const RECT& rectangle, uint32_t fillColor, uint
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::FillAndStrokeRect(const RECT& rectangle, const RGBQUAD& fillColor, const RGBQUAD& strokeColor, uint32_t strokeSize, uint32_t cornerRadius, bool highlight, bool transparent) {
-	return FillAndStrokeRect(rectangle, Util::ColorToLong(fillColor, 255), Util::ColorToLong(strokeColor, 255), strokeSize, cornerRadius, highlight);
+	return FillAndStrokeRect(rectangle, Util::ColorToLong(fillColor, 255), Util::ColorToLong(strokeColor, 255), strokeSize, cornerRadius, highlight, transparent);
 }
 
 /// <summary>
@@ -238,7 +243,7 @@ bool Renderer::Text(const RECT& bounds, const std::wstring& text, const Font& fo
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::Text(const RECT& bounds, const std::string& text, const Font& font, const RGBQUAD& color, bool highlight, bool transparent) {
-	return Text(bounds, text, font, Util::ColorToLong(color, 255), highlight);
+	return Text(bounds, text, font, Util::ColorToLong(color, 255), highlight, transparent);
 }
 
 /// <summary>
@@ -252,7 +257,7 @@ bool Renderer::Text(const RECT& bounds, const std::string& text, const Font& fon
 /// <param name="transparent">Whether transparency masking is applied.</param>
 /// <returns>True when successful, false otherwise.</returns>
 bool Renderer::Text(const RECT& bounds, const std::wstring& text, const Font& font, const RGBQUAD& color, bool highlight, bool transparent) {
-	return Text(bounds, text, font, Util::ColorToLong(color, 255), highlight);
+	return Text(bounds, text, font, Util::ColorToLong(color, 255), highlight, transparent);
 }
 
 /// <summary>
