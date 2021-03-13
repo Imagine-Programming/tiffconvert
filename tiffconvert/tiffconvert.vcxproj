@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CodecValidator.cpp" />
+    <ClCompile Include="CompositeWangHandler.cpp" />
     <ClCompile Include="DestructibleBuffer.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -165,21 +166,26 @@
     <ClCompile Include="tiffconvert.cpp" />
     <ClCompile Include="TiffImage.cpp" />
     <ClCompile Include="Util.cpp" />
+    <ClCompile Include="VerboseWangHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arguments.hpp" />
     <ClInclude Include="CLI11.hpp" />
     <ClInclude Include="CodecValidator.hpp" />
+    <ClInclude Include="CompositeWangHandler.hpp" />
     <ClInclude Include="DestructibleBuffer.hpp" />
     <ClInclude Include="DynaCli.hpp" />
     <ClInclude Include="Font.hpp" />
     <ClInclude Include="Image.hpp" />
     <ClInclude Include="libtiffconvert.h" />
     <ClInclude Include="PreRenderWangHandler.hpp" />
+    <ClInclude Include="rang.hpp" />
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TiffImage.hpp" />
     <ClInclude Include="Util.hpp" />
+    <ClInclude Include="VerbosePrinter.hpp" />
+    <ClInclude Include="VerboseWangHandler.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="tiffconvert.rc" />

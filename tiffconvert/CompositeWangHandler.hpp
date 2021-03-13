@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef prerender_wang_handler_h
-#define prerender_wang_handler_h
+#ifndef composite_wang_handler_h
+#define composite_wang_handler_h
 
 #include <IWangAnnotationCallback.hpp>
 #include <TiffFile.hpp>
@@ -10,24 +10,34 @@ namespace TiffConvert {
 	namespace Handlers {
 
 		/// <summary>
-		/// PreRenderWangHandler is an implementation of <see cref="TiffWang::Tiff::IWangAnnotationCallback"/> that handles events 
+		/// CompositeWangHandler is an implementation of <see cref="TiffWang::Tiff::IWangAnnotationCallback"/> that handles events 
 		/// from the <see cref="Tiffwang::Tiff::WangAnnotationReader"/>. These events describe annotations that are to be rendered 
-		/// onto a Tiff page, this implementation burns those annotations onto the image.
+		/// onto a Tiff page, this implementation applies multiple handlers for these events.
 		/// </summary>
-		class PreRenderWangHandler : public TiffWang::Tiff::IWangAnnotationCallback {
+		class CompositeWangHandler : public TiffWang::Tiff::IWangAnnotationCallback {
 			private:
-				const TiffWang::Tiff::TiffDimensions& m_Dimensions;
-				const HDC m_hDC;
+				using _Handler = std::shared_ptr<TiffWang::Tiff::IWangAnnotationCallback>;
+				using _HandlerCollection = std::vector<_Handler>;
+
+				_HandlerCollection m_Handlers;
 
 			public:
 				/// <summary>
-				/// Construct a new PreRenderWangHandler from a reference to a tiff page dimensions instance and device context.
-				/// This handler burns eiStream/Wang annotations onto the current page, so that the annotations will not have to 
-				/// be parsed by any viewer anymore.
+				/// Construct a new composite handler from a collection of handlers.
 				/// </summary>
-				/// <param name="dimensions">A reference to the dimensions of the current page.</param>
-				/// <param name="hDc">The device context for rendering, created by <see cref="TiffConvert::Renderer"/>.</param>
-				PreRenderWangHandler(const TiffWang::Tiff::TiffDimensions& dimensions, const HDC hDc);
+				/// <param name="handlers">The handlers to add to this collection</param>
+				CompositeWangHandler(const _HandlerCollection& handlers);
+
+				/// <summary>
+				/// Construct a new composite handler without any handlers added to it.
+				/// </summary>
+				CompositeWangHandler() = default;
+
+				/// <summary>
+				/// Add a handler to the composition.
+				/// </summary>
+				/// <param name="handler">The handler to add.</param>
+				void Add(const _Handler& handler) noexcept;
 
 				/// <summary>
 				/// A callback method which will be invoked when the <see cref="WangAnnotationReader"/> encounters a line mark.
@@ -120,15 +130,6 @@ namespace TiffConvert {
 				/// <param name="highlight">Whether or not the highlight filter should be applied (only render on white).</param>
 				/// <param name="transparent">Whether or not the transparent filter should be applied (don't render white).</param>
 				void RenderImage(const std::string& filename, const RECT& bounds, const AN_NEW_ROTATE_STRUCT& rotation, const std::vector<uint8_t>& data, bool highlight, bool transparent) override;
-
-				/// <summary>
-				/// Translate the lfHeight member of <paramref name="font"/> to a scaled value representable on the 
-				/// current output device context, based on the uCreationScale member in <paramref name="info"/>.
-				/// </summary>
-				/// <param name="font">The font to use.</param>
-				/// <param name="info">Scaling information.</param>
-				/// <returns>The translated font size, truncated (i.e. 43.75 becomes 43, required by libtiffconvert)</returns>
-				uint32_t CalculateFontHeight(const LOGFONTA& font, const OIAN_TEXTPRIVDATA& info);
 		};
 
 	}

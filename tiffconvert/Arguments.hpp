@@ -23,6 +23,9 @@ namespace TiffConvert {
 		static constexpr auto NAME_HELPALL = "helpall";
 		static constexpr const OptionDescriptor DESC_HELPALL(NAME_HELPALL, "-H,--help-all", "Display the complete help listing for all commands.");
 
+		static constexpr auto NAME_VERBOSE = "verbose";
+		static constexpr const OptionDescriptor DESC_VERBOSE(NAME_VERBOSE, "-v,--verbose", "Print information about the process to the terminal.");
+
 		static constexpr auto NAME_INVERT = "invert";
 		static constexpr const OptionDescriptor DESC_INVERT(NAME_INVERT, "-i,--invert-colors", "Invert the colors of each Tiff page.");
 

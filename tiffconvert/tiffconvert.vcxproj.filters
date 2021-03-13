@@ -66,6 +66,12 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\libtiffconvert</Filter>
     </ClCompile>
+    <ClCompile Include="CompositeWangHandler.cpp">
+      <Filter>Source Files\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="VerboseWangHandler.cpp">
+      <Filter>Source Files\handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libtiffconvert.h">
@@ -106,6 +112,18 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeWangHandler.hpp">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="VerboseWangHandler.hpp">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="rang.hpp">
+      <Filter>Header Files\cli</Filter>
+    </ClInclude>
+    <ClInclude Include="VerbosePrinter.hpp">
+      <Filter>Header Files\cli</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
