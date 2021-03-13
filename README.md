@@ -84,6 +84,11 @@ change code in that library. You may also open an issue requesting a change in t
 For the rest; just clone the solution and open it in Visual Studio 2019.
 
 ## Release History
+- **1.2.0.0**:
+    - added:  verbose mode;
+    - bugfix: only one dimension was looked at to determine is scaling should be applied, which is now fixed;
+    - bugfix: useless copy of codec that was returned as reference;
+    - bugfix: uninitialized pointer to `CLI::Option`.
 - **1.1.3.0**:
     - bugfix: improper validation of stream offsets and sizes to be read from the stream would cause some eiStream preprocessing to fail.
 - **1.1.2.0**:
