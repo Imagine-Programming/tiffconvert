@@ -200,7 +200,7 @@ int process(const CliContainer& cli, const CliContainer& cli_image, const CliCon
     }
 
     // Pass 3: Scale pages.
-    if (cli.anyset({ TiffConvert::Cli::NAME_MAXWIDTH, TiffConvert::Cli::NAME_MAXWIDTH })) {
+    if (cli.anyset({ TiffConvert::Cli::NAME_MAXWIDTH, TiffConvert::Cli::NAME_MAXHEIGHT })) {
         auto maxwidth  = cli.get_isset_or<uint32_t>(TiffConvert::Cli::NAME_MAXWIDTH, 0);
         auto maxheight = cli.get_isset_or<uint32_t>(TiffConvert::Cli::NAME_MAXHEIGHT, 0);
         auto smooth    = cli.isset(TiffConvert::Cli::NAME_SCALESMOOTH);
