@@ -79,9 +79,9 @@ std::string path_from_base_index(const std::string& path, size_t index, const st
 /// <param name="file">The binary representation of the Tiff file.</param>
 /// <returns></returns>
 int process(const CliContainer& cli, const CliContainer& cli_image, const CliContainer& cli_pdf, TiffImage image, TiffFile file) {
-    auto codec       = cli.get<std::string>(TiffConvert::Cli::NAME_OUTCODEC);
-    auto verbose     = cli.isset(TiffConvert::Cli::NAME_VERBOSE);
-    uint32_t options = (codec.compare("jpeg") == 0 || codec.compare("jpeg2000") == 0) ? 10 : 0;
+    auto& codec   = cli.get<std::string>(TiffConvert::Cli::NAME_OUTCODEC);
+    auto  verbose = cli.isset(TiffConvert::Cli::NAME_VERBOSE);
+    auto options  = static_cast<uint32_t>((codec.compare("jpeg") == 0 || codec.compare("jpeg2000") == 0) ? 10 : 0);
 
     std::shared_ptr<TiffConvert::Cli::VerbosePrinter> printer = nullptr;
 
