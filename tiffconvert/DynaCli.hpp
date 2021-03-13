@@ -24,6 +24,11 @@ namespace TiffConvert {
             struct InternalOption {
                 CLI::Option*            Option;
                 std::variant<TTypes...> Value;
+
+                InternalOption()
+                    : Option(nullptr) {
+
+                }
             };
 
             /*
